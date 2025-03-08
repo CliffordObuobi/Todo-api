@@ -24,3 +24,13 @@ export const updateTodo = async (req, res) => {
   );
   res.json({ update: updatedTodo });
 };
+
+export const deleteTodo = async (req, res) => {
+  const deletedTodo = await Todo.findByIdAndDelete(
+    req.params.id,
+    req.body,
+
+    {new: true, runValidators: true}
+  );
+  res.json({ delete: deletedTodo});
+};
